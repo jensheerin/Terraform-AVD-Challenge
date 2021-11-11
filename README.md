@@ -15,7 +15,7 @@ It begins with the preparation to get started and continues with building a reso
 
 ## Challenges
 
-- Challenge 0 - [Preparation to get started](0%20Preparation/challenge0.md)
+* Challenge 0 - [Preparation to get started](0%20Preparation/challenge0.md)
 * Challenge 1 - [Create a resource group](1%20resource%20group/Challenge1.md)
 * Challenge 2 - [Create a variable file](2%20variables%20file/Challenge2.md)
 * Challenge 3 - [Create a .tfvars file](3%20tfvars%20file/Challenge3.md)
