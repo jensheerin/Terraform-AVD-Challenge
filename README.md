@@ -2,8 +2,8 @@
 
 ## Introduction
 
-This challenge is built to help you hands on experience with using Terraform to deploy Azure Virtual Desktop.
-It begins with the preparation to get started and continues with building a resource group. During the series of challenges you will learn how to create variables and set versions, then deploy Azure Virtual Desktop.
+This challenge will help you gain hands on experience with using Terraform to deploy Azure Virtual Desktop.
+It begins with the preparation to get started and continues with building a resource group. During the series of challenges you will learn how to use Terraform to create variables, set versions, and deploy Azure Virtual Desktop.
 
 ## What you will learn
 
