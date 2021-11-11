@@ -1,3 +1,4 @@
+# https://learn.hashicorp.com/tutorials/terraform/variables?in=terraform/configuration-language
 variable "rgname" {
 default = "avd-rg"
 type = string # optional
