@@ -1,4 +1,5 @@
 # Create AVD workspace
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_workspace
 resource "azurerm_virtual_desktop_workspace" "workspace" {
   name                = var.workspace
   resource_group_name = var.rgname
@@ -8,6 +9,7 @@ resource "azurerm_virtual_desktop_workspace" "workspace" {
 }
 
 # Create AVD host pool
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_host_pool
 resource "azurerm_virtual_desktop_host_pool" "hostpool" {
   resource_group_name      = var.rgname
   location                 = location
@@ -25,7 +27,8 @@ resource "azurerm_virtual_desktop_host_pool" "hostpool" {
   }
 }
 
-# Create AVD DAG
+# Create AVD desktop application group
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_application_group
 resource "azurerm_virtual_desktop_application_group" "dag" {
   resource_group_name = var.rgname
   host_pool_id        = azurerm_virtual_desktop_host_pool.hostpool.id
@@ -37,7 +40,8 @@ resource "azurerm_virtual_desktop_application_group" "dag" {
   depends_on          = [azurerm_virtual_desktop_host_pool.hostpool, azurerm_virtual_desktop_workspace.workspace]
 }
 
-# Associate Workspace and DAG
+# Associate Workspace and Desktop Application Group
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_workspace_application_group_association
 resource "azurerm_virtual_desktop_workspace_application_group_association" "ws-dag" {
   application_group_id = azurerm_virtual_desktop_application_group.dag.id
   workspace_id         = azurerm_virtual_desktop_workspace.workspace.id
