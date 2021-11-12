@@ -1,4 +1,4 @@
 # https://learn.hashicorp.com/tutorials/terraform/oci-variables#define-the-variables
 
 location = "east us"
-rg_name  = "avd-rg"
+rgname  = "avd-rg"
