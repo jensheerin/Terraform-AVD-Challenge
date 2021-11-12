@@ -1,18 +1,20 @@
 # Create AVD workspace
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_workspace
+# https://learn.hashicorp.com/tutorials/terraform/dependencies#manage-explicit-dependencies
 resource "azurerm_virtual_desktop_workspace" "workspace" {
   name                = var.workspace
   resource_group_name = var.rgname
   location            = var.location
   friendly_name       = "AVD Workspace"
   description         = "Workspace"
+  depends_on          = [azurerm_resource_group.rg]
 }
 
 # Create AVD host pool
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_host_pool
 resource "azurerm_virtual_desktop_host_pool" "hostpool" {
   resource_group_name      = var.rgname
-  location                 = location
+  location                 = var.location
   name                     = var.hostpool
   friendly_name            = var.hostpool
   validate_environment     = true
@@ -21,10 +23,7 @@ resource "azurerm_virtual_desktop_host_pool" "hostpool" {
   type                     = "Pooled"
   maximum_sessions_allowed = 16
   load_balancer_type       = "DepthFirst" #[BreadthFirst DepthFirst]
-
-  registration_info {
-    expiration_date = time_rotating.avd_token.rotation_rfc3339
-  }
+  depends_on               = [azurerm_resource_group.rg]
 }
 
 # Create AVD desktop application group
